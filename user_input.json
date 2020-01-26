@@ -1,0 +1,25 @@
+{
+    "business-name": "Example Inc.",
+    "domain-name": "example.com",
+    "sysadmin": {
+        "name": "Sys Admin",
+        "email": "sysadmin@example.com"
+    },
+    "active-services": [
+        {
+            "name": "nextcloud",
+            "url": "nextloud.example.com",
+            "port": 8080
+        },
+        {
+            "name":"mattermost",
+            "url":"mattermost.example.com",
+            "port": 8081
+        },
+        {
+            "name": "collabora",
+            "url": "collabora.example.com",
+            "port": 8082
+        }
+    ]
+}
