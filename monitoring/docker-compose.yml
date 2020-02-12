@@ -1,0 +1,37 @@
+
+version: '3.1'
+
+services:
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+        - ADMINER_DESIGN=galkaev
+        - ADMINER_DEFAULT_SERVER=db
+        - VIRTUAL_HOST=adminer.fabianvolkers.com
+        - VIRTUAL_PORT=8080
+        - LETSENCRYPT_HOST=adminer.fabianvolkers.com
+        - LETSENCRYPT_EMAIL=fabian.volkers@gmail.com
+
+  grafana:
+    image: grafana/grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    environment: 
+      - VIRTUAL_HOST=grafana.fabianvolkers.com
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=grafana.fabianvolkers.com
+      - LETSENCRYPT_EMAIL=fabian.volkers@gmail.com
+    
+
+
+networks:
+    default:
+        external:
+            name: nginx-proxy
+    
+
