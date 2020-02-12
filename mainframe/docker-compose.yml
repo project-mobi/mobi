@@ -17,15 +17,15 @@ services:
   
   apache:
     image: httpd
-    hostname: fabianvolkers.com
+    hostname: projectmobi.io
     volumes:
       - html:/var/www/html
       - ./html:/usr/local/apache2/htdocs/
     environment:
-      - VIRTUAL_HOST=fabianvolkers.com
+      - VIRTUAL_HOST=projectmobi.io
       - VIRTUAL_PORT=8080
-      - LETSENCRYPT_HOST=fabianvolkers.com
-      - LETSENCRYPT_EMAIL=fabian.volkers@gmail.com      
+      - LETSENCRYPT_HOST=projectmobi.io
+      - LETSENCRYPT_EMAIL=webmaster@projectmobi.io      
     restart: always
     ports:
       - "8080:80"
@@ -53,7 +53,7 @@ services:
     environment:
       NGINX_PROXY_CONTAINER: nginx
       NGINX_DOCKER_GEN_CONTAINER: dockergen
-      DEFAULT_EMAIL: fabian.volkers@gmail.com
+      DEFAULT_EMAIL: webmaster@projectmobi.io
     volumes:
       - conf:/etc/nginx/conf.d
       - vhost:/etc/nginx/vhost.d

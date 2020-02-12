@@ -28,6 +28,11 @@ Clone this repository to wherever you need it. Be it your local dev machine or a
 ### Prerequisites
 Your domains A records are pointing to your servers domain. If testing locally please add the domains you plan on configuring to your `/etc/hosts` file.
 
+#### Create docker networks
+```bash
+docker network create nginx-proxy
+```
+
 ### Mobi mainframe (nginx server)
 ```bash
 docker network create nginx-proxy
