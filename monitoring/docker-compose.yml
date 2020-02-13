@@ -7,7 +7,7 @@ services:
     image: adminer
     restart: always
     ports:
-      - "8080:8080"
+      - "8080"
     environment:
         - ADMINER_DESIGN=galkaev
         - ADMINER_DEFAULT_SERVER=db
