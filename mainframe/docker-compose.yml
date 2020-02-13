@@ -25,7 +25,7 @@ services:
       - VIRTUAL_HOST=projectmobi.io
       - VIRTUAL_PORT=8080
       - LETSENCRYPT_HOST=projectmobi.io
-      - LETSENCRYPT_EMAIL=webmaster@projectmobi.io      
+      - LETSENCRYPT_EMAIL=webmaster@projectmobi.io
     restart: always
     ports:
       - "8080:80"
@@ -51,9 +51,12 @@ services:
       - nginx
       - dockergen
     environment:
-      NGINX_PROXY_CONTAINER: nginx
-      NGINX_DOCKER_GEN_CONTAINER: dockergen
-      DEFAULT_EMAIL: webmaster@projectmobi.io
+      - NGINX_PROXY_CONTAINER=nginx
+      - NGINX_DOCKER_GEN_CONTAINER=dockergen
+      - DEFAULT_EMAIL=webmaster@projectmobi.io
+      - NGINX_WEB=nginx-web
+      - DOCKER_GEN=nginx-gen
+      - LETS_ENCRYPT=nginx-letsencrypt    
     volumes:
       - conf:/etc/nginx/conf.d
       - vhost:/etc/nginx/vhost.d
