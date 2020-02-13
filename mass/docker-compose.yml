@@ -17,7 +17,7 @@ services:
                 
   app:
     image: nextcloud:latest
-    hostname: nextcloud.fabianvolkers.com
+    hostname: nextcloud.projectmobi.io
     depends_on:
       - db
     volumes:
@@ -29,14 +29,14 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       # for nginx proxy and letsencrypt
-      - VIRTUAL_HOST=nextcloud.fabianvolkers.com
-      - LETSENCRYPT_HOST=nextcloud.fabianvolkers.com
-      - LETSENCRYPT_EMAIL=fabian.volkers@gmail.com
+      - VIRTUAL_HOST=nextcloud.projectmobi.io
+      - LETSENCRYPT_HOST=nextcloud.projectmobi.io
+      - LETSENCRYPT_EMAIL=webmaster@projectmobi.io
 
       # Nextcloud env vars required for autoconfig
       - NEXTCLOUD_ADMIN_USER=nextcloud_admin
       - NEXTCLOUD_ADMIN_PASSWORD=sV7CbxGCtNkZWhC9PLlExJ04
-      - NEXTCLOUD_TRUSTED_DOMAINS=nextcloud.fabianvolkers.com
+      - NEXTCLOUD_TRUSTED_DOMAINS=nextcloud.projectmobi.io
       - NEXTCLOUD_UPDATE=1
       - MYSQL_HOST=db
       - MYSQL_USER=nextcloud

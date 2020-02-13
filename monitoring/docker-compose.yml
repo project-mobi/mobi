@@ -11,10 +11,10 @@ services:
     environment:
         - ADMINER_DESIGN=galkaev
         - ADMINER_DEFAULT_SERVER=db
-        - VIRTUAL_HOST=adminer.fabianvolkers.com
+        - VIRTUAL_HOST=adminer.projectmobi.io
         - VIRTUAL_PORT=8080
-        - LETSENCRYPT_HOST=adminer.fabianvolkers.com
-        - LETSENCRYPT_EMAIL=fabian.volkers@gmail.com
+        - LETSENCRYPT_HOST=adminer.projectmobi.io
+        - LETSENCRYPT_EMAIL=webmaster@projectmobi.io
 
   grafana:
     image: grafana/grafana
@@ -22,10 +22,10 @@ services:
     ports:
       - "3000:3000"
     environment: 
-      - VIRTUAL_HOST=grafana.fabianvolkers.com
+      - VIRTUAL_HOST=grafana.projectmobi.io
       - VIRTUAL_PORT=3000
-      - LETSENCRYPT_HOST=grafana.fabianvolkers.com
-      - LETSENCRYPT_EMAIL=fabian.volkers@gmail.com
+      - LETSENCRYPT_HOST=grafana.projectmobi.io
+      - LETSENCRYPT_EMAIL=webmaster@projectmobi.io
     
 
 
