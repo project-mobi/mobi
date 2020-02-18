@@ -38,7 +38,12 @@ services:
     restart: always
     ports:
       - "8080:80"
+```
+> the dockergen container needs the nginx container name in the command 
+> for the first container that spins up this would be mainframe_nginx_1, but we should not hardcode this into the command.
 
+`-notify-sighup ${NGINX_NAME} -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf`
+```yaml
   dockergen:
     image: jwilder/docker-gen:latest
     #container_name: nginx-proxy-gen
