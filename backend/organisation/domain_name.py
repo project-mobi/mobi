@@ -1,3 +1,5 @@
+# Add domain name and configure dns records
+
 import whois
 
 
