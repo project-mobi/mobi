@@ -1,10 +1,21 @@
-# project mobi
-## webserver docker compose file
+# Webserver Setup <!-- omit in toc -->
+## Contents <!-- omit in toc -->
+- [Nginx](#nginx)
+- [Apache](#apache)
+- [Dockergen](#dockergen)
+  - [Final yaml](#final-yaml)
+  - [Nginx template](#nginx-template)
+- [Letsencrypt](#letsencrypt)
+
+
+## Docker compose setup <!-- omit in toc -->
 Run nginx in a container with letsencrypt companion for ssl cetificates. The dockergen container automatically checks for new containers on the nginx-proxy network and changes the nginx configuration. 
 
 We also want apache proxied behind nginx. Ideally all requests nginx can't handle go to apache? So all files would be served from their location and nginx will proxy pass to the container with open ports for the other installed applications.
 
 --> find out how this would work with a cms like october. Does october have a cms built in?
+
+### Nginx
 
 ```yaml
 version: '3'
@@ -23,7 +34,11 @@ services:
       - certs:/etc/nginx/certs
     labels:
       - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true"
-  
+  ```
+
+### Apache
+we can optionally configure an apache server behind nginx. Not yet sure why this would be benefitial but it's seems to be a thing.
+  ```yaml
   apache:
     image: httpd
     hostname: fabianvolkers.com
@@ -39,15 +54,16 @@ services:
     ports:
       - "8080:80"
 ```
+### Dockergen
 > the dockergen container needs the nginx container name in the command 
 > for the first container that spins up this would be mainframe_nginx_1, but we should not hardcode this into the command.
 
 `-notify-sighup ${NGINX_NAME} -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf`
 
+#### Final yaml
 ```yaml
   dockergen:
     image: jwilder/docker-gen:latest
-    #container_name: nginx-proxy-gen
     depends_on:
       - nginx
     command: -notify-sighup nginx -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
@@ -59,8 +75,10 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
 ```
+#### Nginx template
 > docker gen uses nginx.tmpl for creating nginx configuration. 
 > We can support sso authentication for every url through nginx
+> https://nginx.org/en/docs/http/ngx_http_auth_request_module.html#auth_request
 ```go	
 location / {
 		# ...
@@ -83,6 +101,7 @@ location / {
 
 ```
 
+### Letsencrypt
 ```yaml
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
