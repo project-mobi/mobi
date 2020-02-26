@@ -18,3 +18,8 @@ Expected output for google.com:
 
 }
 '''
+
+'''
+set dns records on various providers using 
+https://pypi.org/project/dns-lexicon/
+'''

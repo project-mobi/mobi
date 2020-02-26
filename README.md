@@ -1,10 +1,17 @@
-# project mobi
-## Table of Contents
-1. Intro
-2. Services overview
-3. Database setup and config
-4. Installation with docker-compose
-5. Setup
+# project mobi <!-- omit in toc -->
+## Contents <!-- omit in toc -->
+- [1. Intro](#1-intro)
+- [2. Services](#2-services)
+- [3. Databases](#3-databases)
+- [4. Installation with docker-compose](#4-installation-with-docker-compose)
+  - [Prerequisites](#prerequisites)
+    - [Create docker networks](#create-docker-networks)
+  - [Mobi mainframe (nginx server)](#mobi-mainframe-nginx-server)
+  - [Mobi databases](#mobi-databases)
+  - [Mobi mass (nextcloud)](#mobi-mass-nextcloud)
+- [4. Setup](#4-setup)
+- [Besonderheiten](#besonderheiten)
+- [Table of Contents](#table-of-contents)
 
 ## 1. Intro
 All documentation can be found in `./docs`. For the `docker-compose` files please navigate to the respective service's directory (e.g. [mainframe](./mainframe)).
