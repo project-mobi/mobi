@@ -8,9 +8,9 @@ services:
       - db:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - MYSQL_ROOT_PASSWORD=j6mIMCpGoL9ofKwGisLeTMU5
+      - MYSQL_ROOT_PASSWORD=j6mIMCpGoL9ofKwGisLeTMU5 # Definitely change this for deployment
       - MYSQL_USER=nextcloud
-      - MYSQL_PASSWORD=WhC9PLlExJ04sV7CbxGCtNkZ
+      - MYSQL_PASSWORD=WhC9PLlExJ04sV7CbxGCtNkZ # Definitely change this for deployment
       - MYSQL_DATABASE=nextcloud_db
     restart: unless-stopped
             
@@ -35,12 +35,12 @@ services:
 
       # Nextcloud env vars required for autoconfig
       - NEXTCLOUD_ADMIN_USER=nextcloud_admin
-      - NEXTCLOUD_ADMIN_PASSWORD=7hNLl4sCCtC9PGVbxWExJk0Z
+      - NEXTCLOUD_ADMIN_PASSWORD=7hNLl4sCCtC9PGVbxWExJk0Z # Definitely change this for deployment
       - NEXTCLOUD_TRUSTED_DOMAINS=nextcloud.projectmobi.io
       - NEXTCLOUD_UPDATE=1
       - MYSQL_HOST=db
       - MYSQL_USER=nextcloud
-      - MYSQL_PASSWORD=WhC9PLlExJ04sV7CbxGCtNkZ
+      - MYSQL_PASSWORD=WhC9PLlExJ04sV7CbxGCtNkZ # Definitely change this for deployment
       - MYSQL_DATABASE=nextcloud_db  
     restart: unless-stopped
   
