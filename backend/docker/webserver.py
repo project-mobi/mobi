@@ -21,7 +21,7 @@ apache_yml = '''
   # apache webserver behind Nginx reverse proxy
   apache:
     image: httpd
-    hostname: {hostname}
+    hostname: {domain_name}
     volumes:
       - html:/var/www/html
       - ./html:/usr/local/apache2/htdocs/
@@ -72,7 +72,7 @@ letsencrypt_yml = '''
       - /var/run/docker.sock:/var/run/docker.sock:ro
 '''
 
-services = [nginx_yml, dockergen_yml, letsencrypt_yml]
+services = [nginx_yml, apache_yml.format(domain_name="fabianvolkers.com", webmaster_email="webmaster@fabianvolkers.com"), dockergen_yml, letsencrypt_yml]
 compose_file = '''
 version: '3'
 
