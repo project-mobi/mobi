@@ -20,4 +20,13 @@ $CONFIG = array (
   'dbuser' => 'nextcloud',
   'dbpassword' => 'sV7CbxGCtNkZWhC9PLlExJ04',
   'installed' => true,
+
+  /**
+  * When generating URLs, Nextcloud attempts to detect whether the server is
+  * accessed via ``https`` or ``http``. However, if Nextcloud is behind a proxy
+  * and the proxy handles the ``https`` calls, Nextcloud would not know that
+  * ``ssl`` is in use, which would result in incorrect URLs being generated.
+  * Valid values are ``http`` and ``https``.
+  */
+  'overwriteprotocol' => 'https',
 );
