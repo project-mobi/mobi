@@ -23,6 +23,19 @@ environment:
   - MYSQL_PASSWORD=sV7CbxGCtNkZWhC9PLlExJ04
   - MYSQL_DATABASE=nextcloud_db 
 ```
+config file
+```php
+  /**
+  * When generating URLs, Nextcloud attempts to detect whether the server is
+  * accessed via ``https`` or ``http``. However, if Nextcloud is behind a proxy
+  * and the proxy handles the ``https`` calls, Nextcloud would not know that
+  * ``ssl`` is in use, which would result in incorrect URLs being generated.
+  * Valid values are ``http`` and ``https``.
+  */
+  'overwriteprotocol' => 'https',
+```
+
+sample [config file](https://github.com/nextcloud/server/blob/master/config/config.sample.php#L451)
 #### for nginx proxy & letsencrypt
 lets our proxy know to issue a new certificate and change nginx configuration
 - VIRTUAL_HOST=nextcloud.fabianvolkers.com
