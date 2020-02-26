@@ -43,6 +43,7 @@ services:
 > for the first container that spins up this would be mainframe_nginx_1, but we should not hardcode this into the command.
 
 `-notify-sighup ${NGINX_NAME} -watch -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf`
+
 ```yaml
   dockergen:
     image: jwilder/docker-gen:latest
@@ -57,7 +58,32 @@ services:
       - certs:/etc/nginx/certs
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
+```
+> docker gen uses nginx.tmpl for creating nginx configuration. 
+> We can support sso authentication for every url through nginx
+```go	
+location / {
+		# ...
+		{{ if $.Env.NGINX_SSO_ENDPOINT }}
+		auth_request /auth
+		auth_request_set $auth_status $upstream_status;
+		{{ end }}
+		# ...
+	}
+	{{ if $.Env.NGINX_SSO_ENDPOINT }}
+	# Proxy pass auth requests to sso endpoint
+	location = /auth {
+        internal;
+        proxy_pass $.Env.NGINX_SSO_ENDPOINT;
+		proxy_pass_request_body off;
+    	proxy_set_header Content-Length "";
+		proxy_set_header X-Original-URI $request_uri;
+    }
+	{{ end }}
 
+```
+
+```yaml
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     #container_name: nginx-proxy-le
