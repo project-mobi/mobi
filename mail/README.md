@@ -1,0 +1,1 @@
+We will need to set up an smtp server with every instance if they do not supply us with one.
