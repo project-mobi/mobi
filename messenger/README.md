@@ -1,4 +1,22 @@
-# project mobi
+# mobi messenger <!-- omit in toc -->
+## Contents <!-- omit in toc -->
+- [Introduction](#introduction)
+- [Networking](#networking)
+  - [Network diagram](#network-diagram)
+- [mattermost docker compose file](#mattermost-docker-compose-file)
+  - [mattermost](#mattermost)
+    - [Mattermost db](#mattermost-db)
+    - [mattermost app](#mattermost-app)
+      - [additional environment variables](#additional-environment-variables)
+
+## Introduction
+mobi messenger is a cloud messaging service powered by Mattermost. 
+
+## Networking
+
+### Network diagram
+![mattermost network diagram](https://docs.mattermost.com/_images/network1.PNG)
+
 ## mattermost docker compose file
 ```yaml
 version: '3.7'  
