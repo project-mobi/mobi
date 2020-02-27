@@ -12,3 +12,4 @@ project-presentation.odp
 zzz_old/
 
 backend/venv
+backend/api/__pycache__
