@@ -20,7 +20,7 @@
     - [4.3.1. Configuring the compose file](#431-configuring-the-compose-file)
     - [4.3.2. Run docker-compose](#432-run-docker-compose)
   - [4.4. Mobi mass (nextcloud)](#44-mobi-mass-nextcloud)
-- [5. Setup](#5-setup)
+- [5. Direct integration with online management platform](#5-direct-integration-with-online-management-platform)
 - [6. Exceptions](#6-exceptions)
 
 ---
@@ -127,8 +127,8 @@ docker-compose up -d
 ```
 
 ---
-## 5. Setup
-
+## 5. Direct integration with online management platform
+We can manage our docker containers through the docker api or one of the SDKs. This saves us from generating docker-compose files and writing shell scripts to start them. It also mitigates the issue of having sensitive information (e.g. passwords and emailaddresses) stored in the docker compose files.
 
 ---
 ## 6. Exceptions
