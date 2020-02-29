@@ -23,11 +23,11 @@
 - [5. Direct integration with online management platform](#5-direct-integration-with-online-management-platform)
 - [6. Exceptions](#6-exceptions)
 
----
+
 ## 1. Intro
 All documentation can be found the respective service's directory (e.g. [mainframe](./mainframe)).
 
----
+
 ## 2. Services
 ### 2.1. mobi mainframe
 webserver for the cloud environment. Includes letsencrypt and nginx reverse proxy with automated config generation for active containers.
@@ -54,7 +54,7 @@ single-sign-on solution for all services running with the option to connect exte
 
 Click [here](./auth/README.md) for documentation.
 
----
+
 ## 3. Databases
 Configuring the databases properly is vital. We offer the following db types:
 - mariadb
@@ -62,7 +62,7 @@ Configuring the databases properly is vital. We offer the following db types:
 
 for more information please look at the databases [README](./backend/databases.md)
 
----
+
 ## 4. Installation with docker-compose
 the easiest way to get an instance of mobi up and running is using docker-compose
 
@@ -126,11 +126,11 @@ cd ./mass
 docker-compose up -d
 ```
 
----
+
 ## 5. Direct integration with online management platform
 We can manage our docker containers through the docker api or one of the SDKs. This saves us from generating docker-compose files and writing shell scripts to start them. It also mitigates the issue of having sensitive information (e.g. passwords and emailaddresses) stored in the docker compose files.
 
----
+
 ## 6. Exceptions
 
 
